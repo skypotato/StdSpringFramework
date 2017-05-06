@@ -25,5 +25,4 @@ public class HelloBeanTest {
 		System.out.println(hello == hello2);
 
 	}
-
 }
