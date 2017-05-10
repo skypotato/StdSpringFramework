@@ -44,7 +44,7 @@ public class UserClient {
 	}
 
 	@Test
-	@Ignore
+//	@Ignore
 	public void getUserTest() {
 		UserVO user = service.getUser("gildong");
 		System.out.println(user);
