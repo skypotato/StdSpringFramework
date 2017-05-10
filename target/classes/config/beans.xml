@@ -6,16 +6,22 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
+	<aop:aspectj-autoproxy />
+
 	<bean id="performancdTraceAdvice" class="myspring.aop.xml.PerformanceTraceAdvice"></bean>
 
 	<aop:config>
 		<aop:aspect id="traceAspect" ref="performancdTraceAdvice">
-			<aop:around pointcut="execution(public * myspring.user.service..*(..))" method="trace" />
+			<aop:around pointcut="execution(public * myspring.user.service..*(..))"
+				method="trace" />
 		</aop:aspect>
 	</aop:config>
+
 	<context:property-placeholder location="classpath:config/value.properties" />
 	<!-- component scan 설정 -->
-	<context:component-scan base-package="myspring.user"></context:component-scan>
+	<context:component-scan base-package="myspring.user,myspring.aop.annot" />
+
+
 	<!-- DataSource 설정 -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
