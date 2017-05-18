@@ -11,33 +11,33 @@ import myspring.user.vo.UserVO;
 public class UserDaoImpl implements UserDao {
 
 	@Autowired
-    private SqlSession session;
+    private UserMapper userMapper;
 	
 	@Override
 	public UserVO read(String id) {
-		UserVO user  = session.selectOne("userNS.selectUserById", id);
+		UserVO user  = userMapper.selectUserById(id);
 		return user;
 	}
 
 	public List<UserVO> readAll() {
-		List<UserVO> userList = session.selectList("userNS.selectUserList");
+		List<UserVO> userList = userMapper.selectUserList();
 		return userList;
 	}
 	
 	public void insert(UserVO user) {
-		session.update("userNS.insertUser", user);
-		System.out.println("µî·ÏµÈ Record UserId=" + user.getUserId() + " Name=" + user.getName());
+		userMapper.insertUser(user);
+		System.out.println("ï¿½ï¿½Ïµï¿½ Record UserId=" + user.getUserId() + " Name=" + user.getName());
 	}
 
 	@Override
 	public void update(UserVO user) {
-		session.update("userNS.updateUser", user);
+		userMapper.updateUser(user);
 	}
 
 	@Override
 	public void delete(String id) {
-		session.delete("userNS.deleteUser", id);
-		System.out.println("»èÁ¦µÈ Record with ID = " + id ); 
+		userMapper.deleteUser(id);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Record with ID = " + id ); 
 	}
 
 

@@ -29,6 +29,7 @@ public class UserClient {
 	UserService service;
 
 	@Test
+	@Ignore
 	public void daoTest() {
 		UserDao dao = context.getBean("userDao", UserDao.class);
 		
@@ -71,7 +72,7 @@ public class UserClient {
 	}
 
 	@Test
-	@Ignore
+//	@Ignore
 	public void getUserTest() {
 		UserVO user = service.getUser("gildong");
 		System.out.println(user);
